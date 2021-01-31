@@ -1,0 +1,460 @@
+options:
+  parameters:
+    author: ''
+    category: '[SSB Receiver]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: hb
+    hier_block_src_path: '.:'
+    id: dual_demodulator
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Dual Demodulator
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: audio_interp
+  id: variable
+  parameters:
+    comment: ''
+    value: '2'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [768, 28]
+    rotation: 0
+    state: enabled
+- name: audio_samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: int(rtl_samp_rate/decimation)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [640, 28]
+    rotation: 0
+    state: enabled
+- name: decimation
+  id: variable
+  parameters:
+    comment: ''
+    value: '30'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [352, 28]
+    rotation: 0
+    state: enabled
+- name: ft8_audio_bw
+  id: variable
+  parameters:
+    comment: ''
+    value: ft8_audio_high-ft8_audio_low
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [416, 164]
+    rotation: 0
+    state: enabled
+- name: ft8_audio_center
+  id: variable
+  parameters:
+    comment: ''
+    value: int((ft8_audio_high-ft8_audio_low)/2+ft8_audio_low)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [520, 164]
+    rotation: 0
+    state: enabled
+- name: ft8_audio_high
+  id: variable
+  parameters:
+    comment: ''
+    value: '3000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [288, 164]
+    rotation: 0
+    state: enabled
+- name: ft8_audio_low
+  id: variable
+  parameters:
+    comment: ''
+    value: '300'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [176, 164]
+    rotation: 0
+    state: enabled
+- name: ft8_center_freq
+  id: variable
+  parameters:
+    comment: ''
+    value: ft8_dial_freq-rtl_freq+(ft8_audio_center*ft8_usb_lsb)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [656, 164]
+    rotation: 0
+    state: enabled
+- name: ft8_usb_lsb
+  id: variable
+  parameters:
+    comment: ''
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [776, 164]
+    rotation: 0
+    state: enabled
+- name: rtl_samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '240000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [240, 28]
+    rotation: 0
+    state: enabled
+- name: wspr_audio_bw
+  id: variable
+  parameters:
+    comment: ''
+    value: wspr_audio_high-wspr_audio_low
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [416, 100]
+    rotation: 0
+    state: enabled
+- name: wspr_audio_center
+  id: variable
+  parameters:
+    comment: ''
+    value: int((wspr_audio_high-wspr_audio_low)/2+wspr_audio_low)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [520, 100]
+    rotation: 0
+    state: enabled
+- name: wspr_audio_high
+  id: variable
+  parameters:
+    comment: ''
+    value: '1700'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [288, 100]
+    rotation: 0
+    state: enabled
+- name: wspr_audio_low
+  id: variable
+  parameters:
+    comment: ''
+    value: '1300'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [176, 100]
+    rotation: 0
+    state: enabled
+- name: wspr_center_freq
+  id: variable
+  parameters:
+    comment: ''
+    value: wspr_dial_freq-rtl_freq+(wspr_audio_center*wspr_usb_lsb)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [656, 100]
+    rotation: 0
+    state: enabled
+- name: wspr_usb_lsb
+  id: variable
+  parameters:
+    comment: ''
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [776, 100]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_const_vxx_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '4'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [788, 415]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_const_vxx_0_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '4'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [779, 508]
+    rotation: 0
+    state: enabled
+- name: freq_xlating_fir_filter_xxx_0
+  id: freq_xlating_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    center_freq: ft8_center_freq
+    comment: ''
+    decim: decimation
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: rtl_samp_rate
+    taps: firdes.complex_band_pass(1, rtl_samp_rate, -ft8_audio_bw/2, ft8_audio_bw/2,
+      100)
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [304, 392]
+    rotation: 0
+    state: enabled
+- name: freq_xlating_fir_filter_xxx_0_0
+  id: freq_xlating_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    center_freq: wspr_center_freq
+    comment: ''
+    decim: decimation
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: rtl_samp_rate
+    taps: firdes.complex_band_pass(1, rtl_samp_rate, -wspr_audio_bw/2, wspr_audio_bw/2,
+      100)
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [304, 488]
+    rotation: 0
+    state: enabled
+- name: ft8_dial_freq
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: FT8 Dial Frequency
+    short_id: ''
+    type: intx
+    value: '7074000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 176]
+    rotation: 0
+    state: enabled
+- name: pad_sink_0
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: ft8
+    num_streams: '1'
+    optional: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [966, 413]
+    rotation: 0
+    state: enabled
+- name: pad_sink_0_0
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: wspr
+    num_streams: '1'
+    optional: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [956, 507]
+    rotation: 0
+    state: enabled
+- name: pad_source_0
+  id: pad_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: RTL in
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_streams: '1'
+    optional: 'False'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [136, 452]
+    rotation: 0
+    state: enabled
+- name: rtl_freq
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: RTL center frequency
+    short_id: ''
+    type: intx
+    value: '7100000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 264]
+    rotation: 0
+    state: enabled
+- name: ssb_demodulator_0
+  id: ssb_demodulator
+  parameters:
+    affinity: ''
+    alias: ''
+    center_freq: ft8_audio_center
+    comment: ''
+    local_samp_rate: audio_samp_rate
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    usb_lsb: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [536, 396]
+    rotation: 0
+    state: enabled
+- name: ssb_demodulator_1
+  id: ssb_demodulator
+  parameters:
+    affinity: ''
+    alias: ''
+    center_freq: wspr_audio_center
+    comment: ''
+    local_samp_rate: audio_samp_rate
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    usb_lsb: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [536, 492]
+    rotation: 0
+    state: enabled
+- name: wspr_dial_freq
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: WSPR Dial Frequency
+    short_id: ''
+    type: intx
+    value: '7038600'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 88]
+    rotation: 0
+    state: enabled
+
+connections:
+- [blocks_multiply_const_vxx_0, '0', pad_sink_0, '0']
+- [blocks_multiply_const_vxx_0_0, '0', pad_sink_0_0, '0']
+- [freq_xlating_fir_filter_xxx_0, '0', ssb_demodulator_0, '0']
+- [freq_xlating_fir_filter_xxx_0_0, '0', ssb_demodulator_1, '0']
+- [pad_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
+- [pad_source_0, '0', freq_xlating_fir_filter_xxx_0_0, '0']
+- [ssb_demodulator_0, '0', blocks_multiply_const_vxx_0, '0']
+- [ssb_demodulator_1, '0', blocks_multiply_const_vxx_0_0, '0']
+
+metadata:
+  file_format: 1
