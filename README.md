@@ -105,8 +105,10 @@ modprobe snd_aloop
 
 ### Creating Virtual Interfaces
 Create `/etc/alsa/conf.d/80-gnuradio-wsjtx-glue.conf` and put the following content in it:
+
 <details><summary>Click here to show the file.  It's long so it's "hidden" by default.</summary>
 <p>
+
 ```
 # GNU Radio side of loopbacks
 pcm.loop2_0_0 {
@@ -304,6 +306,7 @@ pcm.wsjtx_40m_wspr {
     }
 }
 ```
+
 </p>
 </details>
 
