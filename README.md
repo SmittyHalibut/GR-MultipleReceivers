@@ -35,31 +35,31 @@ Optimizing GNU Radio for the hardware platform:
 * For this process, only connect a single receiver to the RPi at a time.
   * Connect the 20m dongle to the RPi, then run:
     ```
-rtl_eeprom
+    rtl_eeprom
     ```
     You should see an output similar to this:
     ```
-[11:16:48] mark@flyspy:~/src/GR-MultipleReceivers$ rtl_eeprom 
-Found 1 device(s):
-  0:  Generic RTL2832U OEM
-
-Using device 0: Generic RTL2832U OEM
-Detached kernel driver
-Found Rafael Micro R820T tuner
-
-Current configuration:
-__________________________________________
-Vendor ID:		0x0bda
-Product ID:		0x2838
-Manufacturer:		Realtek
-Product:		RTL2838UHIDIR
-Serial number:		00000000
-Serial number enabled:	yes
-IR endpoint enabled:	yes
-Remote wakeup enabled:	no
-__________________________________________
-Reattached kernel driver
-[11:25:59] mark@flyspy:~/src/GR-MultipleReceivers$ 
+    [11:16:48] mark@flyspy:~/src/GR-MultipleReceivers$ rtl_eeprom 
+    Found 1 device(s):
+      0:  Generic RTL2832U OEM
+    
+    Using device 0: Generic RTL2832U OEM
+    Detached kernel driver
+    Found Rafael Micro R820T tuner
+    
+    Current configuration:
+    __________________________________________
+    Vendor ID:		0x0bda
+    Product ID:		0x2838
+    Manufacturer:		Realtek
+    Product:		RTL2838UHIDIR
+    Serial number:		00000000
+    Serial number enabled:	yes
+    IR endpoint enabled:	yes
+    Remote wakeup enabled:	no
+    __________________________________________
+    Reattached kernel driver
+    [11:25:59] mark@flyspy:~/src/GR-MultipleReceivers$ 
     ```
   * The things to look for here are:
     * `Found 1 device(s)` If it fines more than one, remove all but one at a time.  This just removes any ambiguity of which device you're changing.
