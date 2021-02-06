@@ -51,7 +51,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 227]
+    coordinate: [288, 228]
     rotation: 0
     state: enabled
 - name: analog_sig_source_x_0_0
@@ -73,7 +73,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 446]
+    coordinate: [284, 447]
     rotation: 0
     state: enabled
 - name: blocks_add_xx_0
@@ -91,7 +91,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [696, 368]
+    coordinate: [732, 368]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_float_0
@@ -107,7 +107,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [368, 368]
+    coordinate: [318, 366]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0
@@ -160,7 +160,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [352, 20]
+    coordinate: [527, 118]
     rotation: 0
     state: enabled
 - name: local_samp_rate
@@ -177,7 +177,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [208, 20]
+    coordinate: [373, 116]
     rotation: 0
     state: enabled
 - name: pad_sink_0
@@ -195,7 +195,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [824, 380]
+    coordinate: [843, 380]
     rotation: 0
     state: enabled
 - name: pad_source_0
@@ -215,7 +215,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 380]
+    coordinate: [168, 378]
     rotation: 0
     state: enabled
 - name: usb_lsb
@@ -232,7 +232,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [512, 28]
+    coordinate: [696, 118]
     rotation: 0
     state: enabled
 

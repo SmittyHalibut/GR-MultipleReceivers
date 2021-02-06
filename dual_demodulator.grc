@@ -239,7 +239,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [788, 415]
+    coordinate: [786, 416]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_vxx_0_0
@@ -257,7 +257,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [779, 508]
+    coordinate: [786, 512]
     rotation: 0
     state: enabled
 - name: freq_xlating_fir_filter_xxx_0
@@ -334,7 +334,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [966, 413]
+    coordinate: [962, 416]
     rotation: 0
     state: enabled
 - name: pad_sink_0_0
@@ -352,7 +352,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [956, 507]
+    coordinate: [964, 512]
     rotation: 0
     state: enabled
 - name: pad_source_0
@@ -372,7 +372,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [136, 452]
+    coordinate: [127, 452]
     rotation: 0
     state: enabled
 - name: rtl_freq
@@ -407,7 +407,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 396]
+    coordinate: [567, 400]
     rotation: 0
     state: enabled
 - name: ssb_demodulator_1
@@ -425,7 +425,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 492]
+    coordinate: [567, 496]
     rotation: 0
     state: enabled
 - name: wspr_dial_freq

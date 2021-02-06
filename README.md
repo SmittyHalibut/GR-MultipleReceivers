@@ -366,10 +366,10 @@ PiSDR, our OS, doesn't include this software, so we have to install it ourselves
 
 Go to the [WSJT-X home page](https://physics.princeton.edu/pulsar/k1jt/wsjtx.html) and download the latest GA release (or the release candidate if you're feeling saucy) and install it:
 ```
-wget https://physics.princeton.edu/pulsar/k1jt/wsjtx_2.2.2_armhf.deb
-sudo apt install ./wsjtx_2.2.2_armhf.deb
+wget https://physics.princeton.edu/pulsar/k1jt/wsjtx_2.3.0_armhf.deb
+sudo apt install ./wsjtx_2.3.0_armhf.deb
 ```
-Using `apt` to install the package instead of `dpkg` will download the dependencies.  Note that `apt` has a version of wsjtx as well, but as of this writing, it's v2.0.0 where v2.2.2 is available.  So downloading the `.deb` and using `apt` to install it gets you the newest version of WSJT-X, and automatically manages its dependencies. The best of all worlds.  It does mean you're responsible for downloading new versions from the `princeton.edu` site when they're available.
+Using `apt` to install the package instead of `dpkg` will download the dependencies.  Note that `apt` has a version of wsjtx as well, but as of this writing, it's v2.0.0 where v2.3.0 is available.  So downloading the `.deb` and using `apt` to install it gets you the newest version of WSJT-X, and automatically manages its dependencies. The best of all worlds.  It does mean you're responsible for downloading new versions from the `princeton.edu` site when they're available.
 
 ### Running multiple copies of WSJT-X
 Running WSJT-X from the command line, you can pass `-r [radio name]` to it and it will create a unique context for this instance of the program, allowing you to run multiple instances of WSJT-X at the same time.  Again, the names are arbitrary, but I suggest using the band and mode in the "radio" name to make it easy to differentiate them, like so:
@@ -381,8 +381,11 @@ wsjtx -r 20m-FT8
 When you start a WSJT-X instance like that, it starts with a completely fresh, default configuration.  Configure it as you would normally:
 * Main Screen:
   * Set the band and mode
+  * If this is a WSPR page, be sure to check "Upload Spots."  This is why we're here, right?
 * Settings:
   * General Tab: Enter your callsign and grid
+  * Check "Decode After EME Delay"
+    * Why? We aren't doing EME, but the GNU Radio system adds about a 2 second delay to processing.  Enabling this tells WSJT-X to delay the decoding by about 2 seconds.  In the case of EME, it's because of the speed of light between the earth and moon.  In this case, it's because of the GNU Radio processing.  But the effect is the same.
   * Audio Tab: For Input, select the `wsjtx_[band]_[mode]` interface as appropriate.  Keep it on Mono.  Don't worry about Output, leave it blank.
   * Reporting Tab: Check "Enable PSK Reporter Spotting".  (That's why we're here, right?)
   * All other settings are ok defaulted, but you're welcome to change anything else you want.
