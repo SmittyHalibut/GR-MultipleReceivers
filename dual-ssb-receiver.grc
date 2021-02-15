@@ -336,7 +336,7 @@ blocks:
     coordinate: [1936, 249]
     rotation: 0
     state: disabled
-- name: dual_demodulator_20m
+- name: dual_demodulator_0
   id: dual_demodulator
   parameters:
     affinity: ''
@@ -351,10 +351,10 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [621, 265]
+    coordinate: [620, 265]
     rotation: 0
-    state: enabled
-- name: dual_demodulator_40m
+    state: true
+- name: dual_demodulator_0_0
   id: dual_demodulator
   parameters:
     affinity: ''
@@ -369,10 +369,10 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [627, 612]
+    coordinate: [626, 613]
     rotation: 0
     state: enabled
-- name: dual_demodulator_40m_0
+- name: dual_demodulator_0_0_0
   id: dual_demodulator
   parameters:
     affinity: ''
@@ -387,25 +387,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [627, 958]
-    rotation: 0
-    state: disabled
-- name: dual_demodulator_40m_0_0
-  id: dual_demodulator
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    ft8_dial_freq: ft8_freq_10m
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    rtl_freq: rtl_freq_10m
-    wspr_dial_freq: wspr_freq_10m
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1655, 205]
+    coordinate: [629, 957]
     rotation: 0
     state: disabled
 - name: qtgui_waterfall_sink_x_0
@@ -440,7 +422,7 @@ blocks:
     fftsize: '1024'
     freqhalf: 'False'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 0, 0
     int_max: '10'
     int_min: '-140'
     label1: ''
@@ -501,7 +483,7 @@ blocks:
     fftsize: '1024'
     freqhalf: 'False'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 1, 0
     int_max: '10'
     int_min: '-140'
     label1: ''
@@ -562,7 +544,7 @@ blocks:
     fftsize: '1024'
     freqhalf: 'False'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 1, 1
     int_max: '10'
     int_min: '-140'
     label1: ''
@@ -623,7 +605,7 @@ blocks:
     fftsize: '1024'
     freqhalf: 'False'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 2,1
     int_max: '10'
     int_min: '-140'
     label1: ''
@@ -745,7 +727,7 @@ blocks:
     fftsize: '1024'
     freqhalf: 'False'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 2,0
     int_max: '10'
     int_min: '-140'
     label1: ''
@@ -867,7 +849,7 @@ blocks:
     fftsize: '1024'
     freqhalf: 'False'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 0, 1
     int_max: '10'
     int_min: '-140'
     label1: ''
@@ -2326,26 +2308,21 @@ blocks:
     state: disabled
 
 connections:
-- [dual_demodulator_20m, '0', audio_sink_0_0_0, '0']
-- [dual_demodulator_20m, '0', qtgui_waterfall_sink_x_0, '0']
-- [dual_demodulator_20m, '1', audio_sink_0_0, '0']
-- [dual_demodulator_20m, '1', qtgui_waterfall_sink_x_0_1, '0']
-- [dual_demodulator_40m, '0', audio_sink_0_0_0_0, '0']
-- [dual_demodulator_40m, '0', qtgui_waterfall_sink_x_0_0, '0']
-- [dual_demodulator_40m, '1', audio_sink_0_0_1, '0']
-- [dual_demodulator_40m, '1', qtgui_waterfall_sink_x_0_0_0, '0']
-- [dual_demodulator_40m_0, '0', audio_sink_0_0_0_0_0, '0']
-- [dual_demodulator_40m_0, '0', qtgui_waterfall_sink_x_0_0_1, '0']
-- [dual_demodulator_40m_0, '1', audio_sink_0_0_1_0, '0']
-- [dual_demodulator_40m_0, '1', qtgui_waterfall_sink_x_0_0_0_0, '0']
-- [dual_demodulator_40m_0_0, '0', audio_sink_0_0_0_0_0_0, '0']
-- [dual_demodulator_40m_0_0, '0', qtgui_waterfall_sink_x_0_0_1_0, '0']
-- [dual_demodulator_40m_0_0, '1', audio_sink_0_0_1_0_0, '0']
-- [dual_demodulator_40m_0_0, '1', qtgui_waterfall_sink_x_0_0_0_0_0, '0']
-- [rtlsdr_source_20m, '0', dual_demodulator_20m, '0']
-- [rtlsdr_source_40m, '0', dual_demodulator_40m, '0']
-- [rtlsdr_source_40m_0, '0', dual_demodulator_40m_0, '0']
-- [rtlsdr_source_40m_0_0, '0', dual_demodulator_40m_0_0, '0']
+- [dual_demodulator_0, '0', audio_sink_0_0_0, '0']
+- [dual_demodulator_0, '0', qtgui_waterfall_sink_x_0, '0']
+- [dual_demodulator_0, '1', audio_sink_0_0, '0']
+- [dual_demodulator_0, '1', qtgui_waterfall_sink_x_0_1, '0']
+- [dual_demodulator_0_0, '0', audio_sink_0_0_0_0, '0']
+- [dual_demodulator_0_0, '0', qtgui_waterfall_sink_x_0_0, '0']
+- [dual_demodulator_0_0, '1', audio_sink_0_0_1, '0']
+- [dual_demodulator_0_0, '1', qtgui_waterfall_sink_x_0_0_0, '0']
+- [dual_demodulator_0_0_0, '0', audio_sink_0_0_0_0_0, '0']
+- [dual_demodulator_0_0_0, '0', qtgui_waterfall_sink_x_0_0_1, '0']
+- [dual_demodulator_0_0_0, '1', audio_sink_0_0_1_0, '0']
+- [dual_demodulator_0_0_0, '1', qtgui_waterfall_sink_x_0_0_0_0, '0']
+- [rtlsdr_source_20m, '0', dual_demodulator_0, '0']
+- [rtlsdr_source_40m, '0', dual_demodulator_0_0, '0']
+- [rtlsdr_source_40m_0, '0', dual_demodulator_0_0_0, '0']
 
 metadata:
   file_format: 1

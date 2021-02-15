@@ -32,6 +32,18 @@ options:
     state: enabled
 
 blocks:
+- name: audio_gain
+  id: variable
+  parameters:
+    comment: ''
+    value: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [892, 98]
+    rotation: 0
+    state: enabled
 - name: audio_interp
   id: variable
   parameters:
@@ -68,6 +80,18 @@ blocks:
     coordinate: [352, 28]
     rotation: 0
     state: enabled
+- name: filter_shoulder
+  id: variable
+  parameters:
+    comment: ''
+    value: '400'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [886, 28]
+    rotation: 0
+    state: enabled
 - name: ft8_audio_bw
   id: variable
   parameters:
@@ -96,7 +120,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '3000'
+    value: 3000+(filter_shoulder/2)
   states:
     bus_sink: false
     bus_source: false
@@ -108,7 +132,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '300'
+    value: 300-(filter_shoulder/2)
   states:
     bus_sink: false
     bus_source: false
@@ -180,7 +204,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '1700'
+    value: 1600+(filter_shoulder/2)
   states:
     bus_sink: false
     bus_source: false
@@ -192,7 +216,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '1300'
+    value: 1400-(filter_shoulder/2)
   states:
     bus_sink: false
     bus_source: false
@@ -230,7 +254,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: '4'
+    const: audio_gain
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -248,7 +272,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: '4'
+    const: audio_gain
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -272,7 +296,7 @@ blocks:
     minoutbuf: '0'
     samp_rate: rtl_samp_rate
     taps: firdes.complex_band_pass(1, rtl_samp_rate, -ft8_audio_bw/2, ft8_audio_bw/2,
-      100)
+      filter_shoulder)
     type: ccc
   states:
     bus_sink: false
@@ -293,7 +317,7 @@ blocks:
     minoutbuf: '0'
     samp_rate: rtl_samp_rate
     taps: firdes.complex_band_pass(1, rtl_samp_rate, -wspr_audio_bw/2, wspr_audio_bw/2,
-      100)
+      filter_shoulder)
     type: ccc
   states:
     bus_sink: false
