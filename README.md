@@ -9,13 +9,23 @@ I did my initial development on my laptop running Ubuntu 16.04 and GNURadio 3.7.
 
 I'm moving to PiSDR, 2020-11-13 "vanilla" image.
 * Install PiSDR following their instructions.
-* I enabled SSH, by creating a zero byte file called `ssh` on the `/boot` partition.  (This is how you do it in Raspbian, so I assumed it would work here.)
-* I hate loging in as `pi` so I changed my user to `mark` and set a strong password.
-* I changed the hostname to `flyspy` (a Shadowrun reference.)
+* Mount the SD card filesystems on your "main" computer so you can make some changes to the files on disk.
+  * I enabled SSH, by creating a zero byte file called `ssh` on the `/boot` partition.  
+  * I hate loging in as `pi` so I changed my user to `mark` and set a strong password.
+    * Edit `/etc/passwd`, `/etc/group`, and `/etc/shadow` replacing all instances of `pi` with `mark`.  Don't just do a global search and replace because `pi` is a substring in some places you don't want to change, like `spi` and `gpio`.
+    * `sudo mv /home/pi /home/mark` to rename your home directory.
+    * I add my SSH public key to `/home/mark/.ssh/authorized_keys`, but the password will still be set to `raspberry`. You need the password for `sudo`, so change this once you're logged in.
+* Insert the SD card in the RPi and boot up.  Give it a wired network.  Check your DHCP logs to see what IP address it got on start up, and SSH into the host.
+* Run `raspi-config`
+  * I changed the hostname to `flyspy` (a Shadowrun reference.)  If this is not your only RPi on the network you'll probably want a unique hostname.
+  * Advanced Options -> Extend Filesystem
+* Exit `raspi-config` and reboot the RPi: `sudo shutdown -r now`.  Then SSH back in when its back up.
+
 * My goal is to do this completely headless (I'm out of monitors!), entirely over SSH.
   * I'm starting using X11 forwarding in SSH. Windows users may not have this option.  (I'm noticing this is kinda laggy. But it works.)
   * Another option is to use VNC.  If I run into problems with X11, I'll try VNC.
 * GNU Radio Companion needs `xterm`, so install it: `sudo apt install xterm`.  Alternatively, you can configure it to use `gnome-terminal`.
+* While we're using `apt`, let's get the OS updated: `sudo apt update && sudo apt dist-upgrade && sudo shutdown -r now`.  It'll update everything it can, then restart the host again.
 
 Testing the image:
 * `ssh -Y mark@flyspy` will enable X11 forwarding.  When I run a GUI command on `flyspy`, that GUI will display on my laptop.
@@ -100,7 +110,7 @@ Unfortunately, PulseAudio only likes to run when a user is logged in to the cons
 
 ### Installing Loopback Kernel Module
 ```
-modprobe snd_aloop
+sudo modprobe snd_aloop
 ```
 
 ### Creating Virtual Interfaces
@@ -266,16 +276,6 @@ pcm.gr_40m_ft8 {
     }
 }
 
-pcm.wsjtx_40m_ft8 {
-    type asym
-    playback.pcm "loop2_1_3"
-    capture.pcm "loop2_1_3"
-    hint {
-        show on
-        description "WSJTX 40m FT8"
-    }
-}
-
 pcm.wsjtx_20m_wspr {
     type asym
     playback.pcm "loop2_1_0"
@@ -303,6 +303,16 @@ pcm.wsjtx_40m_wspr {
     hint {
         show on
         description "WSJTX 40m WSPR"
+    }
+}
+
+pcm.wsjtx_40m_ft8 {
+    type asym
+    playback.pcm "loop2_1_3"
+    capture.pcm "loop2_1_3"
+    hint {
+        show on
+        description "WSJTX 40m FT8"
     }
 }
 ```
